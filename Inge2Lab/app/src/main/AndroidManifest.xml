@@ -11,21 +11,22 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/launcher_icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignInActivity">
+        <activity android:name=".SignInActivity"/>
+        <activity android:name=".ChildActivity" />
+        <activity android:name=".HijoDetalleActivity" />
+        <activity android:name=".RegistroActivity" />
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ChildActivity" />
-        <activity android:name=".HijoDetalleActivity" />
-        <activity android:name=".RegistroActivity"></activity>
     </application>
 
 </manifest>

@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/splash_screen"
     tools:context=".SignInActivity">
 
     <LinearLayout
@@ -13,21 +14,29 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="20dp"
+            android:src="@drawable/google" />
+
         <TextView
             android:id="@+id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:text="@string/signed_out"
-            android:textColor="@android:color/black"
-            android:textSize="14sp" />
+            android:textAllCaps="false"
+            android:textColor="?attr/colorBackgroundFloating"
+            android:textSize="24sp"
+            android:textStyle="bold|italic" />
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="visible"
-            tools:visibility="gone">
-        </com.google.android.gms.common.SignInButton>
+            tools:visibility="gone"></com.google.android.gms.common.SignInButton>
 
         <LinearLayout
             android:id="@+id/next_and_disconnect"
