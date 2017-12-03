@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignInActivity"/>
+        <activity android:name=".SignInActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".ChildActivity" />
         <activity android:name=".HijoDetalleActivity" />
         <activity android:name=".RegistroActivity" />
