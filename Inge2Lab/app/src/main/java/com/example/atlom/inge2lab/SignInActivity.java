@@ -35,6 +35,11 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 
 public class SignInActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener,
         View.OnClickListener{
@@ -214,7 +219,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         }
     }
 
-
+    //ASync Task para la autenticacion del usuario en el webservice
     @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
     private class AuthUserTask extends AsyncTask<String,Integer,Boolean>{
 

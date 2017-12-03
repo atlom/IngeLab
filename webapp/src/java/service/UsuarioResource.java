@@ -156,4 +156,15 @@ public class UsuarioResource {
         registros = uservice.byFecha(id);
         return registros;
     }
+    
+    @POST
+    @Path("/getfechas")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<Registro> getFechas(Usuario u)throws ClassNotFoundException, SQLException {
+        ArrayList<Registro> registros = new ArrayList();
+        int id = u.getId_usuario();
+        
+        return null;
+    }
 }

@@ -201,4 +201,32 @@ public class Service {
         }
         return vacList;
     }
+
+    public ArrayList<RegistroVacuna> getFecha(int id){
+        try{
+            HttpClient httpClient = new DefaultHttpClient();
+            HttpPost del = new HttpPost(host+"getfecha");
+            del.setHeader("Accept", "application/json");
+            del.setHeader("Content-type", "application/json");
+            JSONObject jsonParam = new JSONObject();
+            jsonParam.put("id_usuario", id);
+            StringEntity se = new StringEntity(jsonParam.toString());
+            del.setEntity(se);
+            //
+            HttpResponse resp = httpClient.execute(del);
+            String respStr = EntityUtils.toString(resp.getEntity());
+            StatusLine statusLine = resp.getStatusLine();
+            JSONArray respJSON = new JSONArray(respStr);
+            for (int i = 0; i < respJSON.length(); i++) {
+                JSONObject obj = respJSON.getJSONObject(i);
+                RegistroVacuna vac = new RegistroVacuna();
+                vac.setFecha(obj.getString("fecha"));
+                vacList.add(vac);
+            }
+        }catch (Exception ex){
+            Log.e("ServicioRest", "Error!", ex);
+        }
+        return vacList;
+    }
+
 }
