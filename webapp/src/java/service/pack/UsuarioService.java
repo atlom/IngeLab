@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package service;
+package service.pack;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -199,6 +199,9 @@ public class UsuarioService {
     }
     
     
+    
+    
+    
     /*Filtros para Hijo*/
     //Por estado
     public ArrayList<Registro> byEstado(int Idchild,int estado) throws SQLException, ClassNotFoundException{
@@ -266,4 +269,27 @@ public class UsuarioService {
         con.cerrarBD();
         return lista;
     }
+    
+    public ArrayList<Registro> getFechas (int Iduser) throws ClassNotFoundException, SQLException{
+        ArrayList<Registro> lista = new ArrayList();
+        conex = con.conectarBD();
+        Statement st = conex.createStatement();
+        String sql ="select rh.fecha \n" +
+                    "from \"RegistroVacuna\" rh join \"Hijos\" h\n" +
+                    "on rh.id_hijo = h.id_hijo\n" +
+                    "join \"Usuarios\" u\n" +
+                    "on u.id_usuario = h.id_usuario\n" +
+                    "where u.id_usuario = " +Iduser+
+                    " and rh.estado = 0";
+        PreparedStatement pst=conex.prepareStatement(sql);
+        ResultSet rs = st.executeQuery(sql);
+        while (rs.next()){
+            Registro tm = new Registro();
+            tm.setFecha(rs.getString("fecha"));
+            lista.add(tm);
+        }
+        return lista;
+    }
+    
+    
 }

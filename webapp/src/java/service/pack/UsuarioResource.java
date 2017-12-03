@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package service;
+package service.pack;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -158,13 +158,13 @@ public class UsuarioResource {
     }
     
     @POST
-    @Path("/getfechas")
+    @Path("/getfecha")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<Registro> getFechas(Usuario u)throws ClassNotFoundException, SQLException {
+    public ArrayList<Registro> getFecha(Usuario u) throws ClassNotFoundException, SQLException {
         ArrayList<Registro> registros = new ArrayList();
         int id = u.getId_usuario();
-        
-        return null;
+        registros = uservice.getFechas(id);
+        return registros;
     }
 }

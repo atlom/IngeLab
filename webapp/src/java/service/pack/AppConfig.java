@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package service;
+package service.pack;
 import java.util.Set;
 import javax.ws.rs.core.Application;
 
@@ -27,7 +27,7 @@ public class AppConfig extends Application{
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(service.UsuarioResource.class);
+        resources.add(service.pack.UsuarioResource.class);
     }
     
 }
