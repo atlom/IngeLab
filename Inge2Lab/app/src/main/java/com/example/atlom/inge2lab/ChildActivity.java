@@ -80,12 +80,18 @@ public class ChildActivity extends AppCompatActivity {
             id = integers[0];
             lista = sc.getFecha(id);
             String fechavacuna;
+            String msg;
 
             for (int i=0;i<lista.size();i++){
                 fechavacuna = lista.get(i).getFecha();
                 long res = diferenciaFechas(hoy,fechavacuna);
                 if (res<=2 && res>=0){
-                    crear_notificacion();
+                    if (res == 0){
+                       msg = "Hay Vacuna Pendiente hoy";
+                    }else{
+                        msg = "Faltan: "+res+" dia/s para la proxima vacuna";
+                    }
+                    crear_notificacion(msg);
                     return null;
                 }
             }
@@ -127,6 +133,10 @@ public class ChildActivity extends AppCompatActivity {
             long milisegundos1 = calendarInicio.getTimeInMillis();
             long milisegundos2 = calendarFinal.getTimeInMillis();
 
+            int i = fechaInicio.getYear()+1900;
+            int p = fechaLlegada.getYear()+1900;
+
+
             // tomamos la diferencia
             long diferenciaMilisegundos = milisegundos2 - milisegundos1;
 
@@ -142,14 +152,14 @@ public class ChildActivity extends AppCompatActivity {
         }
 
         @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-        private void crear_notificacion(){
+        private void crear_notificacion(String msg){
             Uri sonido = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             NotificationCompat.Builder mBuilder =
                     (NotificationCompat.Builder) new NotificationCompat.Builder(getApplicationContext())
                             .setSmallIcon(R.drawable.launcher_icon)
                             .setLargeIcon((((BitmapDrawable) getResources().getDrawable(R.drawable.launcher_icon)).getBitmap()))
                             .setContentTitle("Agenda Pediatrica")
-                            .setContentText("Proxima vacuna en 2 dias")
+                            .setContentText(msg)
                             .setSound(sonido)
                             .setAutoCancel(TRUE);
 

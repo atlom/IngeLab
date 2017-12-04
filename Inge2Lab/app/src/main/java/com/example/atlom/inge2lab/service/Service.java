@@ -24,9 +24,9 @@ import java.util.ArrayList;
 
 public class Service {
 
-    private String host = "http://192.168.0.22:8084/Webservice/webresources/usuario/";
+    //private String host = "http://192.168.0.22:8084/Webservice/webresources/usuario/";
 
-    //private String host = "http://192.168.43.2:8084/Webservice/webresources/usuario/";
+    private String host = "http://192.168.43.2:8084/Webservice/webresources/usuario/";
 
     private ArrayList<Hijo> hijoList = new ArrayList<>();
     private ArrayList<RegistroVacuna> vacList = new ArrayList<>();
