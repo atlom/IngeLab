@@ -93,6 +93,11 @@ public class ChildActivity extends AppCompatActivity {
                     }
                     crear_notificacion(msg);
                     return null;
+                }else if(res < 0){
+                    res = res * -1;
+                    msg ="Vacunas pendientes hace "+res+" dias.";
+                    crear_notificacion(msg);
+                    return null;
                 }
             }
 
